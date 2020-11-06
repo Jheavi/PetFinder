@@ -79,9 +79,6 @@ ul {
 	text-align: center;
 }
 
-@media screen and (min-width: 600px) {
-}
-
 .card-pets:hover {
 	text-decoration: none;
 }

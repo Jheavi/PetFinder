@@ -1,6 +1,4 @@
 import authStore from './auth-store';
-import dispatcher from '../dispatcher/dispatcher';
-import actionTypes from '../actions/action-types';
 
 describe('authStore', () => {
 	describe('getUser', () => {

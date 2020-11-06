@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import ScrollRandomCats from './ScrollRandomCats';
 import * as action from './../../actions/actions';
 import store from './../../stores/principal-store';
-import { waitFor } from '@testing-library/react';
 
 jest.mock('./../../actions/actions');
 

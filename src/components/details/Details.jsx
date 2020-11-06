@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import authStore from '../../stores/auth-store';
 import './Details.css';
 
 function Details({ animal }) {
+	const [user, setUser] = useState(authStore.getUser());
+
+	function handleChange() {
+		setUser(authStore.getUser());
+	}
+
+	useEffect(() => {
+		authStore.addChangeListener(handleChange);
+
+		return () => {
+			authStore.removeChangeListener(handleChange);
+		};
+	}, [user]);
 	return (
 		<>
 			<div className="details-donating">
@@ -61,16 +75,28 @@ function Details({ animal }) {
 									<>
 										<span>Tags:</span>
 										<div className="tag__names">
-											{animal?.tags.map((tag) => {
-												return <span className="tag__name">{tag}</span>;
+											{animal?.tags.map((tag, index) => {
+												return (
+													<span key={`${index}`} className="tag__name">
+														{tag}
+													</span>
+												);
 											})}
 										</div>
 									</>
 								)}
 							</section>
-							<Link to="/adoption">
-								<Button variant="primary">Adopt me!</Button>
-							</Link>
+							{user ? (
+								<Link to="/adoption" id="adoptme__button">
+									<Button variant="primary">Adopt me!</Button>
+								</Link>
+							) : (
+								<div>
+									<Button disabled variant="primary">
+										Login to adopt!
+									</Button>
+								</div>
+							)}
 							<img
 								className="logo__detail"
 								src="https://trello-attachments.s3.amazonaws.com/5f9d3d8395a20040a815a80a/768x727/6b9e6b190008963e1377a82e5497b4c1/dogcat2.png"

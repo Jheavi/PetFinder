@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Filters.css';
 import { requestAnimals } from '../../actions/actions';
 import store from '../../stores/principal-store';
@@ -26,7 +26,7 @@ function Filters({ type }) {
 		}
 	}
 
-	function updateUrlObject(event, animalProperty, urlObject, index) {
+	function updateUrlObject(event, animalProperty, urlObject) {
 		if (event.target.type === 'radio') {
 			urlObject[animalProperty] = [event.target.value];
 		} else {
@@ -77,12 +77,7 @@ function Filters({ type }) {
 												key={option}
 												value={option}
 												onChange={(event) => {
-													updateUrlObject(
-														event,
-														'type',
-														store.getUrlFilter(),
-														index
-													);
+													updateUrlObject(event, 'type', store.getUrlFilter());
 												}}
 											></input>
 											<label htmlFor="checkboxOne">
@@ -141,7 +136,7 @@ function Filters({ type }) {
 					variant="primary"
 					className="button-apply"
 					onClick={() => {
-						applyFilters(store.getUrlFilter(), type);
+						applyFilters(store.getUrlFilter());
 					}}
 				>
 					Apply filters

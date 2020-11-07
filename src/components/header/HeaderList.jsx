@@ -22,29 +22,24 @@ function HeaderList() {
 	}, [user]);
 
 	function isSignInVisible() {
-		return user ? (
+		return (
 			<Button
 				variant="primary"
 				className="log-button"
-				id="header__logout"
-				onClick={(event) => {
-					event.preventDefault();
-					signOut();
-				}}
+				id={user ? 'header__logout' : 'header__login'}
+				onClick={
+					user
+						? (event) => {
+								event.preventDefault();
+								signOut();
+						  }
+						: (event) => {
+								event.preventDefault();
+								signInWithGoogle();
+						  }
+				}
 			>
-				Logout
-			</Button>
-		) : (
-			<Button
-				variant="primary"
-				className="log-button"
-				id="header__login"
-				onClick={(event) => {
-					event.preventDefault();
-					signInWithGoogle();
-				}}
-			>
-				Login
+				{user ? `Logout` : `Login`}
 			</Button>
 		);
 	}
@@ -61,9 +56,6 @@ function HeaderList() {
 				<p className="logo-name">PetFinder</p>
 			</Link>
 			<div className="flex-spacer2"></div>
-			<div className="flex-spacer"></div>
-			<div className="flex-spacer"></div>
-			<div className="flex-spacer"></div>
 			{isSignInVisible()}
 			{user && <span>{`${user.email}`}</span>}
 		</header>

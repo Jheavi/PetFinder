@@ -40,7 +40,6 @@
 	padding: 15px;
 	outline: none;
 	border: none;
-	color: black;
 	background-color: inherit;
 	margin-right: 10px;
 	color: inherit;
@@ -94,12 +93,9 @@
 	padding: 10px;
 	outline: none;
 	background-color: inherit;
-	font-size: 14px;
-	font: inherit;
 	color: inherit;
-	font-weight: bold;
 	margin-right: 10px;
-	font: 400 16px Arial;
+	font: 400 16px Arial, sans-serif;
 }
 
 #dropdown-countries,
@@ -119,9 +115,7 @@
 	margin: 0px 3vw 0px 1vw;
 	background: none;
 	outline: none;
-	font-size: 16px;
 	font: inherit;
-	font-weight: bold;
 	color: inherit;
 	font-weight: 600;
 	background-color: #006ed9;

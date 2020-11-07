@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { requestToken, requestAnimals } from '../../actions/actions';
 import store from './../../stores/principal-store';
-import './MainList.css';
 import Filters from './Filters';
 import List from './List';
 

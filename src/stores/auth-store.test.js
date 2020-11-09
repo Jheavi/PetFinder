@@ -1,6 +1,16 @@
 import authStore from './auth-store';
+import dispatcher from '../dispatcher/dispatcher';
+import actionTypes from '../actions/action-types';
 
 describe('authStore', () => {
+	beforeEach(() => {
+		authStore.setUser(null);
+	});
+
+	afterEach(() => {
+		authStore.setUser(null);
+	});
+
 	describe('getUser', () => {
 		test('should return user', () => {
 			authStore.setUser('abc');
@@ -36,6 +46,24 @@ describe('authStore', () => {
 			authStore.emitChange();
 			//assert
 			expect(test).toBe('');
+		});
+	});
+
+	describe('dispatcher.register actions', () => {
+		test('should change _user from store', () => {
+			const fakeuser = {};
+			dispatcher.dispatch({
+				type: actionTypes.AUTH_LOGIN,
+				payload: fakeuser
+			});
+			expect(authStore.getUser()).toEqual(fakeuser);
+		});
+
+		test('should change _user from store to null', () => {
+			dispatcher.dispatch({
+				type: actionTypes.AUTH_SIGNOUT
+			});
+			expect(authStore.getUser()).toBe(null);
 		});
 	});
 });

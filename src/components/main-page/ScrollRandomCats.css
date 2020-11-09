@@ -1,67 +1,67 @@
 .scroll-cats {
-    overflow-x: auto;
-    position: relative;
-    width: 100vw;
-    height: 400px;
+	overflow-x: auto;
+	position: relative;
+	width: 100vw;
+	height: 400px;
 }
 
 .scrollable {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: auto;
-    position: absolute;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: auto;
+	position: absolute;
 }
 
 .cat-card {
-    width: 300px;
-    height: 350px;
-    margin: 20px;
+	width: 300px;
+	height: 350px;
+	margin: 20px;
 }
 
 .horisontal-images {
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 10px;
-    width: 240px;
-    height: 250px;
+	align-items: center;
+	margin-top: 20px;
+	margin-left: 10px;
+	width: 240px;
+	height: 250px;
+	object-fit: cover;
 }
 
 .card-cat-tittle {
-    color: #006ed9;
-    font-size: 20px;
-    text-align: center;
-    border-bottom: 2px solid rgb(213, 213, 213);
-    overflow: hidden;
-    height: 38px;
+	color: #006ed9;
+	font-size: 20px;
+	text-align: center;
+	overflow: hidden;
+	height: 38px;
 }
 
 .cats-tittle {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 .cats-tittle__text {
-    color: #006ed9;
-    font-size: 30px;
-    text-align: center;
-    text-transform: capitalize;
-    font-weight: bold;
+	color: #006ed9;
+	font-size: 30px;
+	text-align: center;
+	text-transform: capitalize;
+	font-weight: bold;
 }
 
 @media screen and (min-width: 600px) {
-    .cat-card {
-        width: 400px;
-        height: 460px;
-        margin: 0px;
-    }
-    .cats-tittle__text {
-        font-size: 45px;
-    }
-    .scroll-cats {
-        height: 500px;
-    }
-    .horisontal-images {
-        width: 300px;
-        height: 350px;
-    }
+	.cat-card {
+		width: 400px;
+		height: 460px;
+		margin: 0px;
+	}
+	.cats-tittle__text {
+		font-size: 45px;
+	}
+	.scroll-cats {
+		height: 500px;
+	}
+	.horisontal-images {
+		width: 300px;
+		height: 350px;
+	}
 }

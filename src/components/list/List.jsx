@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import './List.css';
 import { Link } from 'react-router-dom';
-import { requestAnimal } from './../../actions/actions';
+import { requestAnimal } from '../../redux/actions/animalsActions';
 
 function List({ animals }) {
 	return (

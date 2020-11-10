@@ -1,13 +1,11 @@
 import React from 'react';
 import './ScrollRandomCats.css';
 import Card from 'react-bootstrap/Card';
-import { requestAnimal } from '../../redux/actions/animalsActions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 
-function ScrollRandomCats({ animals, actions }) {
+function ScrollRandomCats({ animals }) {
 	return (
 		<>
 			<div className="cats-tittle">
@@ -26,7 +24,6 @@ function ScrollRandomCats({ animals, actions }) {
 									style={{ width: '100vw' }}
 									as={Link}
 									to={`/details/${animal.id}`}
-									onClick={() => actions.requestAnimal(animal.id)}
 								>
 									<Card.Body>
 										<Card.Img
@@ -49,7 +46,7 @@ function ScrollRandomCats({ animals, actions }) {
 }
 
 ScrollRandomCats.propTypes = {
-	animals: PropTypes.shape({}).isRequired,
+	animals: PropTypes.shape([]).isRequired,
 	actions: PropTypes.shape({
 		requestAnimal: PropTypes.func.isRequired
 	}).isRequired
@@ -61,8 +58,4 @@ function mapStateToProps({ animals }) {
 	};
 }
 
-function mapDispatchToProps(dispatch) {
-	return { actions: bindActionCreators({ requestAnimal }, dispatch) };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ScrollRandomCats);
+export default connect(mapStateToProps)(ScrollRandomCats);

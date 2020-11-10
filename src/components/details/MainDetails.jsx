@@ -12,9 +12,7 @@ function MainDetails({ animal, actions, match }) {
 	const [urlAnimalId] = useState(match.params.animalId);
 
 	useEffect(() => {
-		if (animal?.id === null) {
-			actions.requestAnimal(urlAnimalId);
-		}
+		actions.requestAnimal(urlAnimalId);
 	}, []);
 
 	return (

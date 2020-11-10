@@ -16,7 +16,7 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/configureStore';
 import { requestAnimals } from './redux/actions/animalsActions';
 
-const store = configureStore({ animals: [], animal: { id: null } });
+const store = configureStore();
 
 store.dispatch(requestAnimals('cat'));
 

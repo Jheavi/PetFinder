@@ -4,6 +4,7 @@ import store from '../../stores/principal-store';
 export const requestAnimals = (type, breed, gender, age, status) => async (
 	dispatch
 ) => {
+	debugger;
 	type = !type ? '' : type;
 	breed = !breed ? '' : breed;
 	gender = !gender ? '' : gender;
@@ -21,14 +22,18 @@ export const requestAnimals = (type, breed, gender, age, status) => async (
 			}
 		);
 		const animals = await response.json();
-		dispatch({
-			type: actionTypes.REQUEST_ANIMALS,
-			animals: animals.animals
-		});
+		dispatch(loadAnimals(animals));
 	} catch (error) {
 		return null;
 	}
 };
+
+function loadAnimals(animalObject) {
+	return {
+		type: actionTypes.REQUEST_ANIMALS,
+		animals: animalObject.animals
+	};
+}
 
 export const requestAnimal = (animalId) => async (dispatch) => {
 	debugger;

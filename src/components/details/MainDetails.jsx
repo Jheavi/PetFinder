@@ -8,7 +8,6 @@ import { PropTypes } from 'prop-types';
 import { requestAnimal } from '../../redux/actions/animalsActions';
 
 function MainDetails({ animal, actions, match }) {
-	debugger;
 	const [urlAnimalId] = useState(match.params.animalId);
 
 	useEffect(() => {
@@ -31,7 +30,6 @@ MainDetails.propTypes = {
 };
 
 function mapStateToProps({ animal }) {
-	debugger;
 	return {
 		animal
 	};

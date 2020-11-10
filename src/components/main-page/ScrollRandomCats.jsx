@@ -13,7 +13,7 @@ function ScrollRandomCats({ animals }) {
 			</div>
 			<section className="scroll-cats">
 				<ul className="scrollable">
-					{animals.animals?.map((animal, index) => {
+					{animals?.map((animal, index) => {
 						return (
 							<li
 								className="cat-card d-flex justify-content-center"
@@ -46,15 +46,13 @@ function ScrollRandomCats({ animals }) {
 }
 
 ScrollRandomCats.propTypes = {
-	animals: PropTypes.shape([]).isRequired,
-	actions: PropTypes.shape({
-		requestAnimal: PropTypes.func.isRequired
-	}).isRequired
+	animals: PropTypes.shape([]).isRequired
 };
 
-function mapStateToProps({ animals }) {
+function mapStateToProps({ animalsR }) {
+	debugger;
 	return {
-		animals
+		animals: animalsR
 	};
 }
 

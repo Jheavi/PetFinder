@@ -22,13 +22,13 @@ export const requestAnimals = (type, breed, gender, age, status) => async (
 			}
 		);
 		const animals = await response.json();
-		dispatch(loadAnimals(animals));
+		dispatch(animalsActionCreator(animals));
 	} catch (error) {
 		return null;
 	}
 };
 
-function loadAnimals(animalObject) {
+function animalsActionCreator(animalObject) {
 	return {
 		type: actionTypes.REQUEST_ANIMALS,
 		animals: animalObject.animals
@@ -50,11 +50,15 @@ export const requestAnimal = (animalId) => async (dispatch) => {
 		);
 		const animal = await response.json();
 		debugger;
-		dispatch({
-			type: actionTypes.REQUEST_ANIMAL,
-			animal: animal.animal
-		});
+		dispatch(animalActionCreator(animal));
 	} catch (error) {
 		return null;
 	}
 };
+
+function animalActionCreator(animalObject) {
+	return {
+		type: actionTypes.REQUEST_ANIMAL,
+		animal: animalObject.animal
+	};
+}

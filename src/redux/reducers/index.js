@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import animalsR from './animalsReducer';
-import animal from './animalReducer';
+import animalsReducer from './animalsReducer';
+import animalReducer from './animalReducer';
 
 const rootReducer = combineReducers({
-	animalsR,
-	animal
+	animalsReducer,
+	animalReducer
 });
 
 export default rootReducer;

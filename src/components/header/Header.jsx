@@ -4,13 +4,16 @@ import BurgerButton from './BurgerButton';
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { requestAnimals } from '../../actions/actions';
+import { requestAnimals } from '../../redux/actions/animalsActions';
 import store from '../../stores/principal-store';
 import { signOut, signInWithGoogle } from '../../actions/auth-actions';
 import authStore from '../../stores/auth-store';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 import './Header.css';
 
-function Header() {
+function Header({ actions }) {
 	const [user, setUser] = useState(authStore.getUser());
 
 	function handleChange() {
@@ -73,7 +76,7 @@ function Header() {
 					className="species__options"
 					id="dropdown-species__dogs"
 					onClick={() => {
-						requestAnimals('dog');
+						actions.requestAnimals('dog');
 						store.resetFilterOnClick('inputBox');
 					}}
 				>
@@ -85,7 +88,7 @@ function Header() {
 					id="dropdown-species__cats"
 					className="species__options"
 					onClick={() => {
-						requestAnimals('cat');
+						actions.requestAnimals('cat');
 						store.resetFilterOnClick('inputBox');
 					}}
 				>
@@ -97,7 +100,7 @@ function Header() {
 					id="dropdown-species__horses"
 					className="species__options"
 					onClick={() => {
-						requestAnimals('horse');
+						actions.requestAnimals('horse');
 						store.resetFilterOnClick('inputBox');
 					}}
 				>
@@ -109,7 +112,7 @@ function Header() {
 					id="dropdown-species__rabbits"
 					className="species__options"
 					onClick={() => {
-						requestAnimals('rabbit');
+						actions.requestAnimals('rabbit');
 						store.resetFilterOnClick('inputBox');
 					}}
 				>
@@ -121,7 +124,7 @@ function Header() {
 					id="dropdown-species__small-animals"
 					className="species__options"
 					onClick={() => {
-						requestAnimals('small-furry');
+						actions.requestAnimals('small-furry');
 						store.resetFilterOnClick('inputBox');
 					}}
 				>
@@ -134,4 +137,19 @@ function Header() {
 		</header>
 	);
 }
-export default Header;
+
+Header.propTypes = {
+	actions: PropTypes.shape({
+		requestAnimals: PropTypes.func.isRequired
+	}).isRequired
+};
+
+function mapStateToProps() {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return { actions: bindActionCreators({ requestAnimals }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

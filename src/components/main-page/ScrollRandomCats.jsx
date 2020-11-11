@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ScrollRandomCats.css';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
+import { requestAnimals } from '../../redux/actions/animalsActions';
 
-function ScrollRandomCats({ animals }) {
+function ScrollRandomCats({ animals, actions }) {
+	useEffect(() => {
+		if (animals[0]?.type !== 'cat') {
+			actions.requestAnimals('cat');
+		}
+	});
+
 	return (
 		<>
 			<div className="cats-tittle">
@@ -49,11 +57,14 @@ ScrollRandomCats.propTypes = {
 	animals: PropTypes.shape([]).isRequired
 };
 
-function mapStateToProps({ animalsR }) {
-	debugger;
+function mapStateToProps({ animalsReducer }) {
 	return {
-		animals: animalsR
+		animals: animalsReducer
 	};
 }
 
-export default connect(mapStateToProps)(ScrollRandomCats);
+function mapDispatchToProps(dispatch) {
+	return { actions: bindActionCreators({ requestAnimals }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollRandomCats);

@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { requestAnimals } from '../../actions/actions';
+import { requestAnimals } from '../../redux/actions/animalsActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 import store from '../../stores/principal-store';
 
-function BurgerButton() {
+function BurgerButton({ actions }) {
 	let burgerClicked = false;
 
 	function burgerClick() {
@@ -85,7 +88,7 @@ function BurgerButton() {
 						to={{ pathname: '/list', search: '?type=dog' }}
 						className="menu-button"
 						onClick={() => {
-							requestAnimals('dog');
+							actions.requestAnimals('dog');
 							hideBurgerMenu();
 							store.resetFilterOnClick('inputBox');
 						}}
@@ -99,7 +102,7 @@ function BurgerButton() {
 						to={{ pathname: '/list', search: '?type=cat' }}
 						className="menu-button"
 						onClick={() => {
-							requestAnimals('cat');
+							actions.requestAnimals('cat');
 							hideBurgerMenu();
 							store.resetFilterOnClick('inputBox');
 						}}
@@ -113,7 +116,7 @@ function BurgerButton() {
 						to={{ pathname: '/list', search: '?type=horse' }}
 						className="menu-button"
 						onClick={() => {
-							requestAnimals('horse');
+							actions.requestAnimals('horse');
 							hideBurgerMenu();
 							store.resetFilterOnClick('inputBox');
 						}}
@@ -127,7 +130,7 @@ function BurgerButton() {
 						to={{ pathname: '/list', search: '?type=rabbit' }}
 						className="menu-button"
 						onClick={() => {
-							requestAnimals('rabbit');
+							actions.requestAnimals('rabbit');
 							hideBurgerMenu();
 							store.resetFilterOnClick('inputBox');
 						}}
@@ -141,7 +144,8 @@ function BurgerButton() {
 						to={{ pathname: '/list', search: '?type=small-furry' }}
 						className="menu-button"
 						onClick={() => {
-							requestAnimals('small-furry');
+							actions.requestAnimals('small-furry');
+							hideBurgerMenu();
 							store.resetFilterOnClick('inputBox');
 						}}
 					>
@@ -152,4 +156,19 @@ function BurgerButton() {
 		</div>
 	);
 }
-export default BurgerButton;
+
+BurgerButton.propTypes = {
+	actions: PropTypes.shape({
+		requestAnimals: PropTypes.func.isRequired
+	}).isRequired
+};
+
+function mapStateToProps() {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return { actions: bindActionCreators({ requestAnimals }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BurgerButton);

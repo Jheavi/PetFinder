@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MainPage.css';
 import Card from 'react-bootstrap/Card';
-import { requestAnimals } from '../../actions/actions';
+import { requestAnimals } from '../../redux/actions/animalsActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 import ScrollRandomCats from './ScrollRandomCats';
 
-function MainPage() {
+function MainPage({ actions }) {
 	return (
 		<main className="principal-page">
 			<img
@@ -20,7 +23,7 @@ function MainPage() {
 					to={{ pathname: '/list', search: '?type=dog' }}
 					className="principal-button"
 					onClick={() => {
-						requestAnimals('dog');
+						actions.requestAnimals('dog');
 					}}
 				>
 					Find a Dog
@@ -30,7 +33,7 @@ function MainPage() {
 					to={{ pathname: '/list', search: '?type=cat' }}
 					className="principal-button"
 					onClick={() => {
-						requestAnimals('cat');
+						actions.requestAnimals('cat');
 					}}
 				>
 					Find a Cat
@@ -41,7 +44,7 @@ function MainPage() {
 				className="principal-button"
 				id="other-animals-btn"
 				onClick={() => {
-					requestAnimals();
+					actions.requestAnimals();
 				}}
 			>
 				Find a pet
@@ -51,7 +54,7 @@ function MainPage() {
 				className="principal-button"
 				id="adopted-animals-btn"
 				onClick={() => {
-					requestAnimals(null, null, null, null, 'adopted');
+					actions.requestAnimals(null, null, null, null, 'adopted');
 				}}
 			>
 				Animals already adopted!
@@ -91,4 +94,18 @@ function MainPage() {
 	);
 }
 
-export default MainPage;
+MainPage.propTypes = {
+	actions: PropTypes.shape({
+		requestAnimals: PropTypes.func.isRequired
+	}).isRequired
+};
+
+function mapStateToProps() {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return { actions: bindActionCreators({ requestAnimals }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

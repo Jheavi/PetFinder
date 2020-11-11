@@ -5,24 +5,21 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
 function MainList({ animals }) {
-	const params = new URLSearchParams(window.location.search.substring(1));
-	const type = params.get('type');
-
 	return (
 		<main className="main-container-list">
-			<Filters type={type} animals={animals} />
+			<Filters animals={animals} />
 			<List animals={animals} />
 		</main>
 	);
 }
 
 MainList.propTypes = {
-	animals: PropTypes.shape({}).isRequired
+	animals: PropTypes.shape([]).isRequired
 };
 
-function mapStateToProps({ animals }) {
+function mapStateToProps({ animalsReducer }) {
 	return {
-		animals
+		animals: animalsReducer
 	};
 }
 

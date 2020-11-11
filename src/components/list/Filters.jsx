@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Filters.css';
-import { requestAnimals } from '../../actions/actions';
+import { requestAnimals } from '../../redux/actions/animalsActions';
 import store from '../../stores/principal-store';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 import Button from 'react-bootstrap/Button';
 
-function Filters({ type }) {
-	const object = {
+function Filters({ filterController, actions }) {
+	const params = new URLSearchParams(window.location.search.substring(1));
+	const [type] = useState(params.get('type'));
+
+	const filterTypes = {
 		type: ['dog', 'cat', 'horse', 'rabbit', 'small-furry'],
 		age: ['baby', 'young', 'adult', 'senior'],
 		gender: ['female', 'male']
@@ -65,8 +71,8 @@ function Filters({ type }) {
 					<div className="horizontal-container">
 						<ul className="ks-cboxtags">
 							<p className="checkbox__text">Specie</p>
-							{object.type &&
-								object.type.map((option, index) => {
+							{filterTypes.type &&
+								filterTypes.type.map((option, index) => {
 									return (
 										<li className="checkbox-li" key={index}>
 											<input
@@ -89,8 +95,8 @@ function Filters({ type }) {
 						</ul>
 						<ul className="ks-cboxtags">
 							<p className="checkbox__text">Age</p>
-							{object.age &&
-								object.age.map((option, index) => {
+							{filterTypes.age &&
+								filterTypes.age.map((option, index) => {
 									return (
 										<li className="checkbox-li" key={index}>
 											<input
@@ -112,8 +118,8 @@ function Filters({ type }) {
 
 					<ul className="ks-cboxtags">
 						<p className="checkbox__text">Gender</p>
-						{object.gender &&
-							object.gender.map((option, index) => {
+						{filterTypes.gender &&
+							filterTypes.gender.map((option, index) => {
 								return (
 									<li className="checkbox-li" key={index}>
 										<input
@@ -146,4 +152,18 @@ function Filters({ type }) {
 	);
 }
 
-export default Filters;
+Filters.propTypes = {
+	actions: PropTypes.shape({
+		requestAnimals: PropTypes.func.isRequired
+	}).isRequired
+};
+
+function mapStateToProps({ urlFilterReducer }) {
+	return { filterController: urlFilterReducer };
+}
+
+function mapDispatchToProps(dispatch) {
+	return { actions: bindActionCreators({ requestAnimals }, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

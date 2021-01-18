@@ -1,20 +1,19 @@
 # Pet finder
 
 ## Heroku Deploy:
- https://petfinder-04.herokuapp.com/
- In progress
+https://petfinder-04.herokuapp.com/
+
+In progress
 
 This is a project built during the Skylab bootcamp.
 
 The App is a full responsive Web App which takes info from the API at https://www.petfinder.com/developers/:
 
 - See a list with animals.
-- Filter the list by animal, gender and age.
-- See the detail of every animal.
-Remove units of a product. If the removed unit is the last, the product is removed from the cart.
-The cart is stored in the database, actually without user login.
-To run the project (scripts)
-After you clone the project go inside each folder [frontend, backend] and run the command npm install on both
+- Filter the list by animal specie (unique selection), gender and age (multiple selection).
+- See the detail of every animal, with a slider of all animal photos.
+- Login to activate "Adopt me!" button (not adopting yet!). 
+- Contact us goes to a form (not sending anything now).
 
 ## Authors
 
@@ -23,6 +22,8 @@ After you clone the project go inside each folder [frontend, backend] and run th
 - Darina Rybalchenko
 
 ## To run the project (scripts)
+
+First of all, after downloading, run npm install.
 
 The scripts you can run with npm (or yarn) are:
 

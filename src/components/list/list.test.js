@@ -16,7 +16,6 @@ describe('List', () => {
 			act(() => {
 				render(
 					<BrowserRouter>
-						{' '}
 						<List
 							animals={[
 								{
@@ -86,7 +85,8 @@ describe('List', () => {
 		});
 
 		test('should render adopted list', () => {
-			expect(container.querySelector('#adopted-img')).toBeInTheDocument();
+			const adoptedImg = document.querySelector('#adopted-img')
+			expect(adoptedImg).not.toBeNull();
 		});
 	});
 });

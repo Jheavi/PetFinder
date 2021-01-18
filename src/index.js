@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/header/Header';
 import HeaderList from './components/header/HeaderList';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 import Footer from './components/footer/Footer';
 import MainDetails from './components/details/MainDetails';
 import MainList from './components/list/MainList';
@@ -32,4 +31,3 @@ ReactDOM.render(
 	</React.StrictMode>,
 	document.getElementById('root')
 );
-reportWebVitals();

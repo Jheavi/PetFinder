@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { BrowserRouter, Route } from "react-router-dom";
 import BurgerButton from "./BurgerButton";
 import * as actions from "../../actions/actions";
@@ -14,8 +14,8 @@ describe("Burger Button", () => {
     );
   });
   test("renders learn react link", () => {
-    const linkElement = screen.getByText(/Species/i);
-    expect(linkElement).toBeInTheDocument();
+    const linkElement = document.getElementById('first-menu__species');
+    expect(linkElement.innerHTML).toBe('Species');
   });
 
   test("should show the first menu when clic menu button", () => {

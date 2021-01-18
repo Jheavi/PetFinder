@@ -36,8 +36,8 @@ The scripts you can run with npm (or yarn) are:
 
 ## Unit & Component testing:
 
-[tests](/public/images/tests.jpg)
-[test coverage](/public/images/coverage.jpg)
+![tests](/public/images/tests.jpg)
+![test coverage](/public/images/coverage.jpg)
 
 ## Other Libraries & Tools:
 

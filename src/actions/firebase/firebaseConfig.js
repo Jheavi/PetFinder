@@ -1,11 +1,15 @@
+import sensitiveVariables from '../../sensitiveVariables';
+
 const firebaseConfig = {
-	apiKey: 'AIzaSyCaA3Brg8Si1nZfE2mt1c4x3S84cgLJ8jc',
-	authDomain: 'petfinder-skylab.firebaseapp.com',
-	databaseURL: 'https://petfinder-skylab.firebaseio.com',
-	projectId: 'petfinder-skylab',
-	storageBucket: 'petfinder-skylab.appspot.com',
-	messagingSenderId: '852615137609',
-	appId: '1:852615137609:web:f6732e01b68cba32227298'
+	apiKey: sensitiveVariables.apiKey || process.env.apiKey,
+	authDomain: 'petfinder-skylab.firebaseapp.com' || process.env.authDomain,
+	databaseURL:
+		'https://petfinder-skylab.firebaseio.com' || process.env.databaseURL,
+	projectId: 'petfinder-skylab' || process.env.projectId,
+	storageBucket: 'petfinder-skylab.appspot.com' || process.env.storageBucket,
+	messagingSenderId:
+		sensitiveVariables.messagingSenderId || process.env.messagingSenderId,
+	appId: sensitiveVariables.appId || process.env.appId
 };
 
 export default firebaseConfig;

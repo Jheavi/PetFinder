@@ -26,7 +26,7 @@ The App is a full responsive Web app which takes info from the API at https://ww
 
 First of all, after downloading, run npm install.
 
-The sensitive variables are not included, so first you will have to create an account in 'https://www.petfinder.com/developers/'. Then you will have to register an app to receive an API key and the rest of the variables.
+The sensitive variables are not included, so first you will have to create an account in 'https://www.petfinder.com/developers/'. Then you will have to register an app to receive an API key and the rest of the variables. The variables must be in the .env file with the names that you can see in src\actions\firebase\firebaseConfig.js.
 
 The scripts you can run with npm (or yarn) are:
 

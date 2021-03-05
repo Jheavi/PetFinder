@@ -1,6 +1,6 @@
 import store from './principal-store';
 import dispatcher from '../dispatcher/dispatcher';
-import actionTypes from '../actions/action-types';
+import actionTypes from '../actions/actionTypes';
 
 describe('Store functions', () => {
 	beforeEach(() => {

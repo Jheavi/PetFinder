@@ -1,11 +1,12 @@
+
 const firebaseConfig = {
-	apiKey: 'AIzaSyCaA3Brg8Si1nZfE2mt1c4x3S84cgLJ8jc',
-	authDomain: 'petfinder-skylab.firebaseapp.com',
-	databaseURL: 'https://petfinder-skylab.firebaseio.com',
-	projectId: 'petfinder-skylab',
-	storageBucket: 'petfinder-skylab.appspot.com',
-	messagingSenderId: '852615137609',
-	appId: '1:852615137609:web:f6732e01b68cba32227298'
+	apiKey: process.env.REACT_APP_API_KEY,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+	databaseURL: process.env.REACT_APP_DATABASE_URL,
+	projectId: process.env.REACT_APP_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_IP,
+	appId: process.env.REACT_APP_APP_ID
 };
 
 export default firebaseConfig;

@@ -1,7 +1,9 @@
 import './firebase/firebaseIndex';
 import firebase from 'firebase';
 import dispatcher from '../dispatcher/dispatcher';
-import actionTypes from './action-types';
+import actionTypes from './actionTypes';
+
+const googleApisAuth = 'https://www.googleapis.com/auth/contacts.readonly'
 
 export function handleSignIn(user) {
 	const customUserData = {
@@ -24,7 +26,7 @@ export function handleError(type) {
 
 export async function signInWithGoogle() {
 	const provider = new firebase.auth.GoogleAuthProvider();
-	provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+	provider.addScope(googleApisAuth);
 
 	try {
 		const { user } = await firebase.auth().signInWithPopup(provider);

@@ -1,9 +1,9 @@
 import dispatcher from '../dispatcher/dispatcher';
-import actionTypes from '../actions/action-types';
+import actionTypes from '../actions/actionTypes';
 import store from '../stores/principal-store';
 
-const clientId = '0wChmPtR7VwHGnCDAQtXeTXKwfVrZ3oTxWANMswDDmSsQj7NGu';
-const clientSecret = 'Z9N1LC0C2b3PEry8VBabaytkr0KSLnkX2L75yAX1';
+const clientId = process.env.REACT_APP_CLIENT_ID;
+const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
 
 async function requestToken() {
 	try {
@@ -17,6 +17,7 @@ async function requestToken() {
 		});
 
 		const data = await response.json();
+		
 		dispatcher.dispatch({
 			type: actionTypes.REQUEST_TOKEN,
 			payload: data.access_token

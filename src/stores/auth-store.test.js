@@ -1,6 +1,6 @@
 import authStore from './auth-store';
 import dispatcher from '../dispatcher/dispatcher';
-import actionTypes from '../actions/action-types';
+import actionTypes from '../actions/actionTypes';
 
 describe('authStore', () => {
 	beforeEach(() => {

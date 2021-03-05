@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher/dispatcher';
-import actionTypes from '../actions/action-types';
+import actionTypes from '../actions/actionTypes';
 
 const CHANGE = 'CHANGE';
 let _urlFilter = {
